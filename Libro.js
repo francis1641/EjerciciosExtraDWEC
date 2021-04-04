@@ -124,8 +124,7 @@ ListaLibros.NextBook1();
 
 
 ListaLibros.finishCurrentBook();
-//ListaLibros.CurrentBook1();
-//ListaLibros.LastBook1();
+
 
 ListaLibros.librosLeidos();
 ListaLibros.librosnoLeidos();
