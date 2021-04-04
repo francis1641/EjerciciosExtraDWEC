@@ -34,8 +34,69 @@ class BookList{
         this.BooksNoRead=contadorLibrosnoleidos;
     }
 
-    CurrentBook(){
+    CurrentBook1(){
+        let contador=false, posicion=0;
+        //NO NOS VA CON EL OPERADOR OR NI TAMPOCO SE COMO FUNCIONA CON LA COMA
+        for(let i=0; i<this.ArrayBooks.length, contador==true;i++){
+            if(this.ArrayBooks[i].Read==false){
+                 posicion=i;
+                contador=true;
+            }
+        }
+        this.CurrentBook= new Book(this.ArrayBooks[posicion].Title, this.ArrayBooks[posicion].Genre,
+                                   this.ArrayBooks[posicion].Author, this.ArrayBooks[posicion].Read,
+                                   this.ArrayBooks[posicion].ReadDate)
+    }
+
+    LastBook1(){
+        let contador=false, posicion=0;
+        //NO NOS VA CON EL OPERADOR OR NI TAMPOCO SE COMO FUNCIONA CON LA COMA
+        for(let i=0; i<this.ArrayBooks.length, contador==true;i++){
+            if(this.ArrayBooks[i].Read==true){
+                 posicion=i;
+                contador=true;
+            }
+        }
+        this.LastBook= new Book(this.ArrayBooks[posicion].Title, this.ArrayBooks[posicion].Genre,
+                                   this.ArrayBooks[posicion].Author, this.ArrayBooks[posicion].Read,
+                                   this.ArrayBooks[posicion].ReadDate)
+    }
+
+    ponerNext(){
+        this.NextBook= new Book("Capitan America", "Ciencia Ficcion", "Pepe", false, Date());
+  
+    }
+
+    NextBook1(){
+            //PREGUNTAR HACER PARA QUE TE LEA EL SEGUNDO FALSE
+    }
+
+    findNextBook(){
+        let contador=false, posicion=0;
+        //NO NOS VA CON EL OPERADOR OR NI TAMPOCO SE COMO FUNCIONA CON LA COMA
+        for(let i=0; i<this.ArrayBooks.length, contador==true;i++){
+            if(this.ArrayBooks[i].Read==false){
+                 posicion=i;
+                contador=true;
+            }
+        }
+        this.NextBook= new Book(this.ArrayBooks[posicion].Title, this.ArrayBooks[posicion].Genre,
+                                   this.ArrayBooks[posicion].Author, this.ArrayBooks[posicion].Read,
+                                   this.ArrayBooks[posicion].ReadDate)
+    }
+
+    finishCurrentBook(){
+        //CurrentBook1();
+        //LastBook1();
+        //NextBook1();
+
+        this.CurrentBook.Read=true;
+        this.CurrentBook.ReadDate=Date();
+        this.LastBook=new Book(this.CurrentBook.Genre, this.CurrentBook.Author, this.CurrentBook.Read, this.CurrentBook.ReadDate);
+        this.CurrentBook=this.NextBook;
         
+        //PREGUNTAR COMO LLAMAR A UN METODO DENTRO DE OTRO METODO NO NOS FUNCIONA
+        findNextBook();
     }
 
     add(Title, Genre, Author, Read){
@@ -51,9 +112,20 @@ class BookList{
 
 ListaLibros= new BookList;
 
-ListaLibros.add("Piratas", "Accion", "David", false);
+ListaLibros.add("Piratas", "Accion", "David", true);
 ListaLibros.add("Asesinos", "Miedo", "Francis", false);
 ListaLibros.add("QUIJOTE", "Novela", "Antonio", false);
+
+ListaLibros.ponerNext();
+
+ListaLibros.CurrentBook1();
+ListaLibros.LastBook1();
+ListaLibros.NextBook1();
+
+
+ListaLibros.finishCurrentBook();
+//ListaLibros.CurrentBook1();
+//ListaLibros.LastBook1();
 
 ListaLibros.librosLeidos();
 ListaLibros.librosnoLeidos();
