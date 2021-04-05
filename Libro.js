@@ -35,15 +35,17 @@ class BookList{
     }
 
     CurrentBook1(){
-        let contador=false, posicion=0;
+        let contador=true, posicion=0;
         //NO NOS VA CON EL OPERADOR OR NI TAMPOCO SE COMO FUNCIONA CON LA COMA
-        for(let i=0; i<this.ArrayBooks.length, contador==true;i++){
+        for(let i=0; i<this.ArrayBooks.length && contador;i++){
             if(this.ArrayBooks[i].Read==false){
                  posicion=i;
-                contador=true;
+                contador=false;
             }
         }
-        this.CurrentBook= new Book(this.ArrayBooks[posicion].Title, this.ArrayBooks[posicion].Genre,
+        this.CurrentBook=this.ArrayBooks[posicion];
+        this.posicionCurrentBook=posicion;
+         new Book(this.ArrayBooks[posicion].Title, this.ArrayBooks[posicion].Genre,
                                    this.ArrayBooks[posicion].Author, this.ArrayBooks[posicion].Read,
                                    this.ArrayBooks[posicion].ReadDate)
     }
@@ -69,6 +71,7 @@ class BookList{
 
     NextBook1(){
             //PREGUNTAR HACER PARA QUE TE LEA EL SEGUNDO FALSE
+
     }
 
     findNextBook(){
@@ -86,7 +89,7 @@ class BookList{
     }
 
     finishCurrentBook(){
-        //CurrentBook1();
+        //this.CurrentBook1();
         //LastBook1();
         //NextBook1();
 
